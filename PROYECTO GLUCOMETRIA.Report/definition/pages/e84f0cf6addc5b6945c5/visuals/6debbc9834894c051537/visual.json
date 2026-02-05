@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "6debbc9834894c051537",
+  "position": {
+    "x": 639.36,
+    "y": 336.96000000000004,
+    "z": 6000,
+    "height": 365.76,
+    "width": 617.76,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "map",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CENTRO_MEDICO"
+                    }
+                  },
+                  "Property": "CIUDAD "
+                }
+              },
+              "queryRef": "CENTRO_MEDICO.CIUDAD ",
+              "nativeQueryRef": "CIUDAD ",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CENTRO_MEDICO"
+                    }
+                  },
+                  "Property": "NOMBRE DEL CENTRO MEDICO"
+                }
+              },
+              "queryRef": "CENTRO_MEDICO.NOMBRE DEL CENTRO MEDICO",
+              "nativeQueryRef": "NOMBRE DEL CENTRO MEDICO"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "mapStyles": [
+        {
+          "properties": {
+            "mapTheme": {
+              "expr": {
+                "Literal": {
+                  "Value": "'road'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "mapControls": [
+        {
+          "properties": {
+            "showZoomButtons": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

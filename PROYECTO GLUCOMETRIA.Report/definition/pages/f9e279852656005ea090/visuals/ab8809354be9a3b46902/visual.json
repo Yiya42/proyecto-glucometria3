@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "ab8809354be9a3b46902",
+  "position": {
+    "x": 10,
+    "y": 6.875,
+    "z": 0,
+    "height": 97.5,
+    "width": 300,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "GLUCOMETRIA1"
+                    }
+                  },
+                  "Property": "Cantidad de Médico Profesionales"
+                }
+              },
+              "queryRef": "GLUCOMETRIA1.Cantidad de Médico Profesionales",
+              "nativeQueryRef": "Cantidad de Médico Profesionales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "GLUCOMETRIA1"
+                    }
+                  },
+                  "Property": "Maximo Resultado de la Glicemia"
+                }
+              },
+              "queryRef": "GLUCOMETRIA1.Maximo Resultado de la Glicemia",
+              "nativeQueryRef": "Maximo Resultado de la Glicemia"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "GLUCOMETRIA1"
+                    }
+                  },
+                  "Property": "Resultado Minimo de la Glicemia"
+                }
+              },
+              "queryRef": "GLUCOMETRIA1.Resultado Minimo de la Glicemia",
+              "nativeQueryRef": "Resultado Minimo de la Glicemia"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "GLUCOMETRIA1"
+                  }
+                },
+                "Property": "Cantidad de Médico Profesionales"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

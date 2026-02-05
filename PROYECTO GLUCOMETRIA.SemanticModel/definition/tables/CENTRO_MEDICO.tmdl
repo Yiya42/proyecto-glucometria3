@@ -1,0 +1,97 @@
+table CENTRO_MEDICO
+	lineageTag: cf60a9fa-cfad-4acc-bad3-cd6f2fd21c64
+
+	column 'CÓDIGO CENTRO MEDICO'
+		dataType: string
+		lineageTag: cfad3893-21a6-43eb-ab77-8dc52d92540e
+		summarizeBy: none
+		sourceColumn: CÓDIGO CENTRO MEDICO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NOMBRE DEL CENTRO MEDICO'
+		dataType: string
+		lineageTag: 2c6faccb-6de1-46e8-ba88-1d2cd7480526
+		dataCategory: Place
+		summarizeBy: none
+		sourceColumn: NOMBRE DEL CENTRO MEDICO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIRECCION
+		dataType: string
+		lineageTag: 4f894721-606a-4725-bfed-e0cda654c506
+		dataCategory: Address
+		summarizeBy: none
+		sourceColumn: DIRECCION
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIO
+		dataType: string
+		lineageTag: 48e2274b-814c-44d0-a484-716ea4fd9bb0
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: BARRIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCALIDAD
+		dataType: string
+		lineageTag: d62c5be6-975e-46fa-8981-617d3cfeac45
+		dataCategory: Place
+		summarizeBy: none
+		sourceColumn: LOCALIDAD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CIUDAD '
+		dataType: string
+		lineageTag: 608d42c7-c4dd-497a-bb5d-41a77b7e6c5a
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: "CIUDAD "
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTAMENTO
+		dataType: string
+		lineageTag: bfe904da-7c8a-4377-ba44-f37ac96ab1ee
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: DEPARTAMENTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAIS
+		dataType: string
+		lineageTag: ee1eb983-c1a7-4001-917a-3ad476850615
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: PAIS
+
+		annotation SummarizationSetBy = Automatic
+
+	column TELEFONO
+		dataType: int64
+		formatString: 0
+		lineageTag: 8237bb7e-2e38-4adf-9aa0-a0aa94630525
+		summarizeBy: none
+		sourceColumn: TELEFONO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CENTRO_MEDICO = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\armar\OneDrive\PROYECTO GLUCOMETRIA.xlsx"), null, true),
+				    CENTRO_MEDICO_Table = Origen{[Item="CENTRO_MEDICO",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(CENTRO_MEDICO_Table,{{"CÓDIGO CENTRO MEDICO", type text}, {"NOMBRE DEL CENTRO MEDICO", type text}, {"DIRECCION", type text}, {"BARRIO", type text}, {"LOCALIDAD", type text}, {"CIUDAD ", type text}, {"DEPARTAMENTO", type text}, {"PAIS", type text}, {"TELEFONO", Int64.Type}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

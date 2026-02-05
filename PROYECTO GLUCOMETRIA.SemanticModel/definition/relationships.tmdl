@@ -1,0 +1,37 @@
+relationship AutoDetected_67106992-12ea-4d27-ac9b-34a3d0596ef6
+	fromColumn: PROFESIONAL_MEDICO.'CÓDIGO CENTRO MEDICO'
+	toColumn: CENTRO_MEDICO.'CÓDIGO CENTRO MEDICO'
+
+relationship AutoDetected_7d9f800f-6082-455b-a510-e0e98e2777d8
+	fromColumn: GLUCOMETRIA1.'CODIGO EPS'
+	toColumn: EPS.'CODIGO EPS'
+
+relationship AutoDetected_d0b0ee41-041e-4a58-af3c-9bc4d9da2cfa
+	fromColumn: GLUCOMETRIA1.'CODIGO PLAN COMPLEMENTARIO'
+	toColumn: PLAN_COMPLEMENTARIO.'CODIGO PLAN COMPLEMENTARIO'
+
+relationship AutoDetected_3ce0befa-0866-48e7-94fb-86e243e0cda7
+	fromColumn: GLUCOMETRIA1.'NÚMERO DE REGISTRO MÉDICO'
+	toColumn: PROFESIONAL_MEDICO.'NÚMERO DE  REGISTRO MÉDICO'
+
+relationship AutoDetected_578d1856-7c74-4971-b347-8fc288bb10ae
+	fromColumn: GLUCOMETRIA1.'CODIGO TIPO DE MUESTRA'
+	toColumn: TIPO_MUESTRA.'CODIGO TIPO DE MUESTRA'
+
+relationship AutoDetected_67974efd-82d1-4eef-be64-3025205d4bb7
+	fromColumn: GLUCOMETRIA1.'CODIGO COMIDA'
+	toColumn: TIPO­_COMIDA.'CODIGO COMIDA'
+
+relationship AutoDetected_a9a274cf-fc94-46e2-b109-2144b7236e8a
+	fromColumn: GLUCOMETRIA1.'CODIGO INSULINA'
+	toColumn: TIPO_INSULINA.'CODIGO INSULINA'
+
+relationship a3f42352-459e-4c27-8fb5-c03d0f5439ce
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CALENDARIO.FECHA
+	toColumn: LocalDateTable_e88c197d-d8ef-4890-95fd-a5ef68ce24bd.Date
+
+relationship da3cf557-ea36-c082-a9c2-b7b744e27f89
+	fromColumn: GLUCOMETRIA1.FECHA
+	toColumn: CALENDARIO.FECHA
+

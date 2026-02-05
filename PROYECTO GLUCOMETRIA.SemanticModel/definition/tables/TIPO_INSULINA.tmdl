@@ -1,0 +1,33 @@
+table TIPO_INSULINA
+	lineageTag: dab2e3b5-a6f5-4408-a748-2082f0e927c1
+
+	column 'CODIGO INSULINA'
+		dataType: string
+		lineageTag: 99fbfbd0-ffb3-4483-84b8-94b9363764ea
+		summarizeBy: none
+		sourceColumn: CODIGO INSULINA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TIPO INSULINA'
+		dataType: string
+		lineageTag: 5edac28a-829a-4c3e-9c0b-dcfd239bddf0
+		summarizeBy: none
+		sourceColumn: TIPO INSULINA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TIPO_INSULINA = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\armar\OneDrive\PROYECTO GLUCOMETRIA.xlsx"), null, true),
+				    TIPO_INSULINA_Table = Origen{[Item="TIPO_INSULINA",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(TIPO_INSULINA_Table,{{"CODIGO INSULINA", type text}, {"TIPO INSULINA", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

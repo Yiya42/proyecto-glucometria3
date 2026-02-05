@@ -1,0 +1,28 @@
+model Model
+	culture: es-MX
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-CO
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["CENTRO_MEDICO","EPS","GLUCOMETRIA1","PLAN_COMPLEMENTARIO","PROFESIONAL_MEDICO","TIPO­_COMIDA","TIPO_INSULINA","TIPO_MUESTRA"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table CENTRO_MEDICO
+ref table DateTableTemplate_04ab2de8-1122-405d-97ef-9bfbdfe1edc1
+ref table EPS
+ref table GLUCOMETRIA1
+ref table PLAN_COMPLEMENTARIO
+ref table PROFESIONAL_MEDICO
+ref table TIPO­_COMIDA
+ref table TIPO_INSULINA
+ref table TIPO_MUESTRA
+ref table CALENDARIO
+ref table LocalDateTable_e88c197d-d8ef-4890-95fd-a5ef68ce24bd
+
+ref cultureInfo es-MX
+

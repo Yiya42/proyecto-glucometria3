@@ -1,0 +1,84 @@
+table CALENDARIO
+	lineageTag: 3682361f-1023-4fbe-9c3f-c4430e305800
+
+	column FECHA
+		formatString: Short Date
+		lineageTag: 5e9c10aa-9c2c-4d79-98ec-db359c9a6090
+		summarizeBy: none
+		sourceColumn: [Date]
+
+		variation Variación
+			isDefault
+			relationship: a3f42352-459e-4c27-8fb5-c03d0f5439ce
+			defaultHierarchy: LocalDateTable_e88c197d-d8ef-4890-95fd-a5ef68ce24bd.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AÑO = YEAR(CALENDARIO[FECHA])
+		formatString: 0
+		lineageTag: 181537cd-1cb8-4e8c-a5a8-fc296377f9ed
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NUMERO DE MES' = MONTH(CALENDARIO[FECHA])
+		formatString: 0
+		lineageTag: 4a72cc4d-6a92-4987-86e8-ce54ca269389
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIA = DAY(CALENDARIO[FECHA])
+		formatString: 0
+		lineageTag: 4ed39c61-1263-44a3-92cb-d3961f5755a9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column TRIMESTRE = QUARTER(CALENDARIO[FECHA])
+		formatString: 0
+		lineageTag: 7fbe9cab-90b5-45ee-97bc-27b2907e9e52
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MES = FORMAT(CALENDARIO[FECHA],"MMMM")
+		lineageTag: 15c39e67-4196-471f-9626-7a9b1f3e413a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DIA DE LA SEMANA' = FORMAT(CALENDARIO[FECHA], "DDDD")
+		lineageTag: 3f0a9cd5-7c87-4aca-b33c-feb985e3b41b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NUMERO DE DIA DE LA SEMANA' = WEEKDAY(CALENDARIO[FECHA])
+		formatString: 0
+		lineageTag: ba15e4a2-31b0-4fc6-9d00-e4f897c0609b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NUMERO DE LA SEMANA' = WEEKNUM(CALENDARIO[FECHA])
+		formatString: 0
+		lineageTag: 83795a5d-8af5-4ea7-8679-01b41dc8aa48
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NOMBRE DEL TRIMESTRE' = CONCATENATE("Trimestre", CALENDARIO[TRIMESTRE])
+		lineageTag: cf5d08a8-2414-4ea0-bf33-0f5ba52d26a7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CALENDARIO = calculated
+		mode: import
+		source = CALENDAR(FIRSTDATE(GLUCOMETRIA1[FECHA]),LASTDATE(GLUCOMETRIA1[FECHA]))
+
+	annotation PBI_Id = 20efb4224ff340659b49caa55431d8d1
+

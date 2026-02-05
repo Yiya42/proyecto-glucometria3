@@ -1,0 +1,148 @@
+table GLUCOMETRIA1
+	lineageTag: e414d102-5f1f-4b69-a967-227a5cf1fd7a
+
+	measure 'Resultado Minimo de la Glicemia' = MIN(GLUCOMETRIA1[RESULTADO DE GLICEMIA])
+		formatString: 0
+		lineageTag: b2ddc82a-65ba-41cf-ad75-51c97de643ca
+
+	measure 'Maximo Resultado de la Glicemia' = MAX(GLUCOMETRIA1[RESULTADO DE GLICEMIA])
+		formatString: 0
+		lineageTag: 1dc511d6-d669-4737-9f46-5ba1ce4b5f37
+
+	measure 'Resultado de la  Glicemia' = AVERAGE(GLUCOMETRIA1[RESULTADO DE GLICEMIA])
+		formatString: 0
+		lineageTag: 95b80fb9-81d5-4f6c-90f0-f1c6a72d2b5a
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Resultado de la Glicemia por Laboratorio' = CALCULATE([Resultado de la  Glicemia], TIPO_MUESTRA[DESCRIPCION]="LABORATORIO CLINICO")
+		formatString: 0
+		lineageTag: 60f99aea-fabd-4d91-9160-d2a6c876b147
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Resultado de Glicemia por Glucometro' = Calculate([Resultado de la  Glicemia], TIPO_MUESTRA[DESCRIPCION]="GLUCOMETRO")
+		formatString: 0
+		lineageTag: 40bcfb03-9d20-4a3f-b931-515ed92164b0
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Cantidad de Médico Profesionales' = DISTINCTCOUNT(PROFESIONAL_MEDICO[NOMBRE DEL PROFESIONAL])
+		formatString: 0
+		lineageTag: 65f5b544-62fd-4c77-9b38-e3545488b810
+
+	column 'CODIGO EPS'
+		dataType: string
+		lineageTag: a7c11be0-d337-4bab-813d-5132d5123657
+		summarizeBy: none
+		sourceColumn: CODIGO EPS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CODIGO PLAN COMPLEMENTARIO'
+		dataType: int64
+		formatString: 0
+		lineageTag: aea4e9df-7f72-4b2e-8bc6-a97769ef5408
+		summarizeBy: none
+		sourceColumn: CODIGO PLAN COMPLEMENTARIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NÚMERO DE REGISTRO MÉDICO'
+		dataType: int64
+		formatString: 0
+		lineageTag: cc089abe-ca7b-40e0-a2e1-c4951aad205f
+		summarizeBy: none
+		sourceColumn: NÚMERO DE REGISTRO MÉDICO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CODIGO TIPO DE MUESTRA'
+		dataType: string
+		lineageTag: 7ce9f9dc-d78b-4cba-acc8-c4cc0830f2fa
+		summarizeBy: none
+		sourceColumn: CODIGO TIPO DE MUESTRA
+
+		annotation SummarizationSetBy = Automatic
+
+	column FECHA
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ac8635a5-fef5-497d-b4b7-6848b6f3b5c9
+		summarizeBy: none
+		sourceColumn: FECHA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column HORA
+		dataType: dateTime
+		formatString: Short Time
+		lineageTag: 41b0dd8d-363f-4b46-8526-8b8c6dcd2414
+		summarizeBy: none
+		sourceColumn: HORA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'CODIGO COMIDA'
+		dataType: string
+		lineageTag: b4450c6e-4ad5-4b87-92b2-4d9ff710ca30
+		summarizeBy: none
+		sourceColumn: CODIGO COMIDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RESULTADO DE GLICEMIA'
+		dataType: int64
+		formatString: 0
+		lineageTag: e2c090c0-3420-4713-aad9-4dcd18323d65
+		summarizeBy: average
+		sourceColumn: RESULTADO DE GLICEMIA
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'CODIGO INSULINA'
+		dataType: string
+		lineageTag: 14fbbc19-ae07-4832-b02f-38b35a4b7ef0
+		summarizeBy: none
+		sourceColumn: CODIGO INSULINA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CANTIDAD DE INSULINA'
+		dataType: int64
+		formatString: 0
+		lineageTag: 23b3f359-3384-4f2f-9921-2742a1dadf14
+		summarizeBy: sum
+		sourceColumn: CANTIDAD DE INSULINA
+
+		annotation SummarizationSetBy = User
+
+	column 'AJUSTES DE INSULINA '
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e26b910-bdcb-4d8c-9d7a-da4ee4fed39e
+		summarizeBy: sum
+		sourceColumn: "AJUSTES DE INSULINA "
+
+		annotation SummarizationSetBy = User
+
+	partition GLUCOMETRIA1 = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\armar\OneDrive\PROYECTO GLUCOMETRIA.xlsx"), null, true),
+				    GLUCOMETRIA_Table = Origen{[Item="GLUCOMETRIA",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(GLUCOMETRIA_Table,{{"CODIGO EPS", type text}, {"CODIGO PLAN COMPLEMENTARIO", Int64.Type}, {"NÚMERO DE REGISTRO MÉDICO", Int64.Type}, {"CODIGO TIPO DE MUESTRA", type text}, {"FECHA", type date}, {"HORA", type time}, {"CODIGO COMIDA", type text}, {"RESULTADO DE GLICEMIA", Int64.Type}, {"CODIGO INSULINA", type text}, {"CANTIDAD DE INSULINA", Int64.Type}, {"AJUSTES DE INSULINA ", Int64.Type}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

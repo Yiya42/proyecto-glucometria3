@@ -1,0 +1,33 @@
+table EPS
+	lineageTag: c565e8db-7ec7-4466-b8fe-bd6644d3a544
+
+	column 'CODIGO EPS'
+		dataType: string
+		lineageTag: 19f748d7-4fda-4f14-bf4c-6d083a2f6b31
+		summarizeBy: none
+		sourceColumn: CODIGO EPS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NOMBRE DE LA EPS'
+		dataType: string
+		lineageTag: d24089d6-3680-446d-b75d-517e24414253
+		summarizeBy: none
+		sourceColumn: NOMBRE DE LA EPS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition EPS = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\armar\OneDrive\PROYECTO GLUCOMETRIA.xlsx"), null, true),
+				    EPS_Table = Origen{[Item="EPS",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(EPS_Table,{{"CODIGO EPS", type text}, {"NOMBRE DE LA EPS", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

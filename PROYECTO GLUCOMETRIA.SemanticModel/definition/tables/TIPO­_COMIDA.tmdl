@@ -1,0 +1,39 @@
+table TIPO­_COMIDA
+	lineageTag: b4a01475-a11e-4e53-9af3-635034862452
+
+	column 'CODIGO COMIDA'
+		dataType: string
+		lineageTag: deea9bf0-69c6-46c6-bbe8-47962df95c39
+		summarizeBy: none
+		sourceColumn: CODIGO COMIDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TIPO DE COMIDA'
+		dataType: string
+		lineageTag: 36be3f4e-24a6-4909-bf9e-ad7e7fa69859
+		summarizeBy: none
+		sourceColumn: TIPO DE COMIDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'INSULINA CORRESPONDIENTE' = IF('TIPO­_COMIDA'[TIPO DE COMIDA]="AYUNAS","LISPRO", IF('TIPO­_COMIDA'[TIPO DE COMIDA]="DESAYUNO", "LISPRO",IF('TIPO­_COMIDA'[TIPO DE COMIDA]="ALMUERZO","LISPRO", "GARGLINA")))
+		lineageTag: 4a6fa775-76f0-4371-b50a-3ea63b8d55ad
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TIPO­_COMIDA = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\armar\OneDrive\PROYECTO GLUCOMETRIA.xlsx"), null, true),
+				    #"TIPO­_COMIDA_Table" = Origen{[Item="TIPO­_COMIDA",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"TIPO­_COMIDA_Table",{{"CODIGO COMIDA", type text}, {"TIPO DE COMIDA", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

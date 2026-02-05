@@ -1,0 +1,42 @@
+table PROFESIONAL_MEDICO
+	lineageTag: 937bb319-77c8-4060-8454-4749da1a2627
+
+	column 'NÚMERO DE  REGISTRO MÉDICO'
+		dataType: int64
+		formatString: 0
+		lineageTag: f5cd6538-0ad3-4fcc-bfdc-e17bfa6ec605
+		summarizeBy: none
+		sourceColumn: NÚMERO DE  REGISTRO MÉDICO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NOMBRE DEL PROFESIONAL'
+		dataType: string
+		lineageTag: 0d39ee94-008d-402c-a5d0-fa1196576771
+		summarizeBy: none
+		sourceColumn: NOMBRE DEL PROFESIONAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CÓDIGO CENTRO MEDICO'
+		dataType: string
+		lineageTag: b34a426b-0962-490b-9f92-10d2ecf4ff48
+		summarizeBy: none
+		sourceColumn: CÓDIGO CENTRO MEDICO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PROFESIONAL_MEDICO = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\armar\OneDrive\PROYECTO GLUCOMETRIA.xlsx"), null, true),
+				    PROFESIONAL_MEDICO_Table = Origen{[Item="PROFESIONAL_MEDICO",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(PROFESIONAL_MEDICO_Table,{{"NÚMERO DE  REGISTRO MÉDICO", Int64.Type}, {"NOMBRE DEL PROFESIONAL", type text}, {"CÓDIGO CENTRO MEDICO", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

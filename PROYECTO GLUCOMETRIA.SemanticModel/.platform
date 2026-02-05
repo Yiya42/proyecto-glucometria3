@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "PROYECTO GLUCOMETRIA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fbb61ca0-ab4f-417b-ac87-f720e6581a8b"
+  }
+}

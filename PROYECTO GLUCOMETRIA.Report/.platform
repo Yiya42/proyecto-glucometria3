@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "PROYECTO GLUCOMETRIA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "03cdb2f3-a04d-4754-80f4-1abea441d487"
+  }
+}

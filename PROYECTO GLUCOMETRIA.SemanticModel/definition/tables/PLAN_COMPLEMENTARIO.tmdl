@@ -1,0 +1,34 @@
+table PLAN_COMPLEMENTARIO
+	lineageTag: 34df5a5b-cd89-47d7-9583-ab4670b1322a
+
+	column 'CODIGO PLAN COMPLEMENTARIO'
+		dataType: int64
+		formatString: 0
+		lineageTag: 89f2b05e-9777-4a8c-b989-92f5b66b6668
+		summarizeBy: none
+		sourceColumn: CODIGO PLAN COMPLEMENTARIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TIPO PLAN COMPLEMENTARIO'
+		dataType: string
+		lineageTag: b41caabd-fb21-4822-aab9-50fbcce9c6b4
+		summarizeBy: none
+		sourceColumn: TIPO PLAN COMPLEMENTARIO
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PLAN_COMPLEMENTARIO = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\armar\OneDrive\PROYECTO GLUCOMETRIA.xlsx"), null, true),
+				    PLAN_COMPLEMENTARIO_Table = Origen{[Item="PLAN_COMPLEMENTARIO",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(PLAN_COMPLEMENTARIO_Table,{{"CODIGO PLAN COMPLEMENTARIO", Int64.Type}, {"TIPO PLAN COMPLEMENTARIO", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

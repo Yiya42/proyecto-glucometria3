@@ -1,0 +1,139 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 296,
+        "y": 308
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1151.7078584168466,
+            "y": 179.823374056798
+          },
+          "nodeIndex": "CENTRO_MEDICO",
+          "nodeLineageTag": "cf60a9fa-cfad-4acc-bad3-cd6f2fd21c64",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 612.723695508814,
+            "y": -10
+          },
+          "nodeIndex": "EPS",
+          "nodeLineageTag": "c565e8db-7ec7-4466-b8fe-bd6644d3a544",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 561.01409033478319,
+            "y": 306.91244512114895
+          },
+          "nodeIndex": "GLUCOMETRIA1",
+          "nodeLineageTag": "e414d102-5f1f-4b69-a967-227a5cf1fd7a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 273.96753984700149,
+            "y": 612.13261640129792
+          },
+          "nodeIndex": "PLAN_COMPLEMENTARIO",
+          "nodeLineageTag": "34df5a5b-cd89-47d7-9583-ab4670b1322a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 846.74068462092589,
+            "y": 178.21730932075673
+          },
+          "nodeIndex": "PROFESIONAL_MEDICO",
+          "nodeLineageTag": "937bb319-77c8-4060-8454-4749da1a2627",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 10,
+            "y": 246.12833344480481
+          },
+          "nodeIndex": "TIPO­_COMIDA",
+          "nodeLineageTag": "b4a01475-a11e-4e53-9af3-635034862452",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 917.70628614722546,
+            "y": -1.199811958709347
+          },
+          "nodeIndex": "TIPO_INSULINA",
+          "nodeLineageTag": "dab2e3b5-a6f5-4408-a748-2082f0e927c1",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 275.89794928126958,
+            "y": 425.29144452735648
+          },
+          "nodeIndex": "TIPO_MUESTRA",
+          "nodeLineageTag": "1582a1b4-3440-42fd-98cc-bff6258aa5dc",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1052.7078584168466,
+            "y": 524.066308200649
+          },
+          "nodeIndex": "CALENDARIO",
+          "nodeLineageTag": "3682361f-1023-4fbe-9c3f-c4430e305800",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

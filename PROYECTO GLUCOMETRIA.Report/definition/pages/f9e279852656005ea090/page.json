@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "f9e279852656005ea090",
+  "displayName": "Tooltip",
+  "displayOption": "ActualSize",
+  "height": 240,
+  "width": 320,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filtere76e1e2032b0c3a4a81c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "GLUCOMETRIA1"
+              }
+            },
+            "Property": "RESULTADO DE GLICEMIA"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "93f8dd401c6207cae0c0",
+    "type": "Tooltip",
+    "parameters": [
+      {
+        "name": "Param_Filtere76e1e2032b0c3a4a81c",
+        "boundFilter": "Filtere76e1e2032b0c3a4a81c",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "GLUCOMETRIA1"
+              }
+            },
+            "Property": "RESULTADO DE GLICEMIA"
+          }
+        }
+      }
+    ]
+  },
+  "type": "Tooltip"
+}

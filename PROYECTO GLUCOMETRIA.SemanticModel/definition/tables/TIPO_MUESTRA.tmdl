@@ -1,0 +1,33 @@
+table TIPO_MUESTRA
+	lineageTag: 1582a1b4-3440-42fd-98cc-bff6258aa5dc
+
+	column 'CODIGO TIPO DE MUESTRA'
+		dataType: string
+		lineageTag: 066be5ff-bf81-4743-8ef8-560774c54794
+		summarizeBy: none
+		sourceColumn: CODIGO TIPO DE MUESTRA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DESCRIPCION
+		dataType: string
+		lineageTag: 4136a8c5-c5be-4057-aa39-e4034f6055d8
+		summarizeBy: none
+		sourceColumn: DESCRIPCION
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TIPO_MUESTRA = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\armar\OneDrive\PROYECTO GLUCOMETRIA.xlsx"), null, true),
+				    TIPO_MUESTRA_Table = Origen{[Item="TIPO_MUESTRA",Kind="Table"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(TIPO_MUESTRA_Table,{{"CODIGO TIPO DE MUESTRA", type text}, {"DESCRIPCION", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+
